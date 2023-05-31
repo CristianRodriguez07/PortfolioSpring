@@ -1,0 +1,72 @@
+<html xmlns:th="http_//thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+    <link th:href="@{/css/Portfolio.css}" rel="stylesheet">
+</head>
+<body>
+<div class="portfolio">
+    <header class="portfolio__header">
+        <h1 class="portfolio__title">Desarrollador Full Stack</h1>
+        <nav class="portfolio__nav">
+            <ul class="portfolio__menu">
+                <li class="portfolio__item"><a href="#about" class="portfolio__link">Sobre mí</a></li>
+                <li class="portfolio__item"><a href="#skills" class="portfolio__link">Habilidades</a></li>
+                <li class="portfolio__item"><a href="#projects" class="portfolio__link">Proyectos</a></li>
+                <li class="portfolio__item"><a href="#contact" class="portfolio__link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="portfolio__main">
+        <section id="about" class="portfolio__section portfolio__section--about">
+            <div class="portfolio__sobremi">
+                <h2 class="portfolio__subtitle">Sobre mí</h2>
+                <p class="portfolio__text">Soy Cristian Rodriguez Cervantes, estudiante de desarrollo de aplicaciones multiplataformas en Cesur plaza eliptica. Me gusta la programación y quiero crear aplicaciones web, móviles y de escritorio para diferentes plataformas. Aprendo los principales lenguajes de programación, bases de datos, contenidos multimedia, seguridad y calidad, y computación en la nube. Hago prácticas profesionales en empresas del sector y participo en proyectos reales. Mi objetivo es seguir formándome y actualizándome en este campo tan dinámico y competitivo.</p>
+            </div>
+        </section>
+            <section id="skills" class="portfolio__section portfolio__section--skills" >
+                <h2 class="portfolio__subtitle">Habilidades</h2>
+                <ul class="portfolio__list" th:each="habilidad : ${habilidades}">
+                    <li class="portfolio__skill" th:text = "${habilidad.skill}"></li>
+                </ul>
+        </section>
+        <section id="projects" class="portfolio__section portfolio__section--projects">
+            <h2 class="portfolio__subtitle">Proyectos</h2>
+            <div class="portfolio__grid" th:each="proyecto : ${proyectos}">
+                <div class="portfolio__card">
+                    <img th:src="@{${proyecto.imagen}}" alt="Proyecto 1" class="portfolio__image">
+                    <div class="portfolio__info">
+                        <h3 class="portfolio__name" th:text="${proyecto.titulo}"></h3>
+                        <p class="portfolio__button" th:text="${proyecto.link}"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="portfolio__section portfolio__section--contact">
+            <h2 class="portfolio__subtitle">Contacto</h2>
+            <p class="portfolio__text">Si te interesa mi trabajo y quieres contactar conmigo, puedes enviarme un correo electrónico a Ayudacris@gmail.com o seguirme en mis redes sociales.</p>
+            <ul class="portfolio__socials">
+                <li class="portfolio__social"><a href="#" class="portfolio__icon"><img src="https://img.freepik.com/iconos-gratis/gorjeo_318-674515.jpg" alt="Twitter"></a></li>
+                <li class="portfolio__social"><a href="#" class="portfolio__icon"><img src="https://img.freepik.com/vector-premium/icono-linkedin_488108-5.jpg" alt="LinkedIn"></a></li>
+                <li class="portfolio__social"><a href="#" class="portfolio__icon"><img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" alt="GitHub"></a></li>
+            </ul>
+        </section>
+        <section id="contacto" class="portfolio__section portfolio__section--contact">
+            <h2 class="portfolio__subtitle">Formulario de contacto</h2>
+            <form class="portfolio__form" method="post" action="add">
+                <label for="name" class="portfolio__label">Nombre:</label>
+                <input type="text" id="name" name="name" class="portfolio__input">
+                <label for="email" class="portfolio__label">Correo electrónico:</label>
+                <input type="email" id="email" name="email" class="portfolio__input">
+                <label for="message" class="portfolio__label">Mensaje:</label>
+                <textarea id="message" name="message" class="portfolio__textarea"></textarea>
+                <button type="submit" class="portfolio__button">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <footer class="portfolio__footer">
+        <p class="portfolio__copy">&copy; 2023 Desarrollador Full Stack. Todos los derechos reservados.</p>
+    </footer>
+</div>
+</body>
+</html>
